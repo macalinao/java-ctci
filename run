@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+cd src
+javac Problem"$1".java
+java Problem"$1"
