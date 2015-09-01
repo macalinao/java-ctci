@@ -4,7 +4,7 @@ public class Problem2_1 {
   public static void main(String args[]) {
     Node list = makeList(new int[]{ 1, 2, 3, 4, 5, 6, 7, 8, 1, 5, 7 });
     printList(list);
-    removeDupes(list);
+    removeDupesNoBuffer(list);
     printList(list);
   }
 
@@ -20,6 +20,27 @@ public class Problem2_1 {
         ints.add(node.next.val);
         node = node.next;
       }
+    }
+  }
+
+  public static void removeDupesNoBuffer(Node head) {
+    int pos = 0;
+    Node curr = head;
+    while (curr != null && curr.next != null) {
+      Node next = curr.next;
+
+      Node check = head;
+      for (int i = 0; i <= pos; i++) {
+        if (check.val == next.val) {
+          // remove dupe
+          curr.next = curr.next.next;
+          pos--;
+          break;
+        }
+        check = check.next;
+      }
+      curr = curr.next;
+      pos++;
     }
   }
 
